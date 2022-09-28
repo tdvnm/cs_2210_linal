@@ -1,0 +1,419 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper,top=0cm, margin=0.85in]{geometry}
+
+%for math
+\usepackage{amsmath, amssymb, amsfonts} %standard
+\usepackage{youngtab} % makes squares for math diagrams
+%-----------------------------------------------------------           
+
+%\usepackage{sectsty}
+%for lists and numbers
+\usepackage{enumitem}
+%-----------------------------------------------------------
+
+% Doc setting
+\usepackage[english]{babel} % Replace `english' with e.g. `spanish' to change the document language
+\usepackage{textcmds} %more symbols
+\usepackage{fontspec} %more fonts
+\usepackage{setspace} %to set spacing bw words and lines
+\usepackage{changepage}
+\setlength\parindent{0pt}
+
+%footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt} %remove headerline
+
+\fancyfoot[RE,RO]{\thepage}
+\fancyfoot[LE,LO]{\emph{Shubhro Gupta — CS-2210}}
+\pagestyle{fancy}
+%-----------------------------------------------------------
+
+%for pictures and graphs
+\usepackage{graphicx} %add image
+\usepackage{adjustbox}
+
+\usepackage{pgfplots} %for graphing plotting
+\pgfplotsset{compat=1.18, width=10cm}
+%-----------------------------------------------------------
+
+%for code
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{fancyvrb} %for coding blocks
+%\usepackage{algorithm}
+%\usepackage{algpseudocode} %for pseudocode
+%\usepackage{algorithm, algpseudocode}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{algorithm2e}
+
+\setmonofont[Scale=MatchLowercase]{[SFMono-Regular.ttf]}
+%\usepackage{lstfiracode} %firacode
+\usepackage[framemethod=tikz]{mdframed} %adding background to lstlisting
+\usepackage{tikz-3dplot} 
+
+\usepackage[ruled,vlined,boxed]{algorithm2e} %for pseudocode lines
+
+
+
+%for colors and links
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage[many]{tcolorbox}  % for colored boxes
+\usepackage{color} % to get colors
+\usepackage{xcolor} %more colors options and flexibility
+\usepackage{transparent}
+
+
+
+%-----------------------------------------------------------------------------
+
+
+%CUSOMIZATIONS
+
+% my colors
+%dracula
+\definecolor{background}{rgb}{0.16,0.16,0.21}
+\definecolor{codegreen}{rgb}{0.24,0.68,0.65}
+\definecolor{codepurple}{rgb}{0.51,0.31,0.87}
+\definecolor{codered}{rgb}{0.81,0.13,0.18}
+\definecolor{codebluegray}{rgb}{0.02,0.31,0.68}
+
+\definecolor{comment}{rgb}{0.67,0.74,0.79}
+\definecolor{textcolor}{rgb}{0.22,0.22,0.22}
+
+%style for coding
+\lstdefinestyle{python}{
+    language=python,
+    backgroundcolor=\color{white},   
+    commentstyle={\color{comment}},
+    keywordstyle={\color{codepurple}},
+    stringstyle={\color{codegreen}},
+    basicstyle={\ttfamily\color{textcolor}},
+    keywordstyle = [2]{\color{codered}},
+    keywordstyle = [3]{\color{codebluegray}},
+    keywordstyle = [4]{\color{teal}},
+    otherkeywords = {<, >, +, -, =, *, \[, \], &&, ||, format, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    morekeywords = [4]{+, -, *, /, =, <, >, format},
+    morekeywords = [3]{\[, \],  1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    %
+    breakatwhitespace=false, 
+    frame=shadowbox,
+    rulecolor=\color{textcolor},
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=15pt, %distance between code and numbers
+    numberstyle=\scriptsize\ttfamily\color{comment},
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    xleftmargin=4.3em, %margin bw left page and frame
+    framexleftmargin=3.8em, %margin bw text and frame
+    %xleftmargin=3.4em,
+    framexrightmargin=-0.5em,
+    tabsize=2,
+    aboveskip=1.5em,
+    belowskip=0.5em,
+    framextopmargin=9pt,
+    framexbottommargin=9pt,
+    frameshape={RYR}{Y}{Y}{RYR}
+}
+
+\lstdefinestyle{c}{
+    language=c,
+    backgroundcolor=\color{white},   
+    commentstyle={\color{comment}},
+    keywordstyle={\color{codepurple}},
+    stringstyle={\color{codegreen}},
+    basicstyle={\ttfamily\color{textcolor}},
+    keywordstyle = [2]{\color{codered}},
+    keywordstyle = [3]{\color{codebluegray}},
+    keywordstyle = [4]{\color{teal}},
+    otherkeywords = {<, >, +, -, =, *, \[, \], &&, ||, stdio.h, stdlib.h, 1, 2, 3, 4, 5, 6,7, 8, 9, 0, ;},
+    morekeywords = [4]{+, -, *, /, =, <, >, stdio.h, stdlib.h},
+    morekeywords = [3]{\[, \],  1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    morekeywords = [2]{&&, ||},
+    %
+    breakatwhitespace=false, 
+    frame=shadowbox,
+    rulecolor=\color{textcolor},
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=15pt, %distance between code and numbers
+    numberstyle=\scriptsize\ttfamily\color{comment},
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    xleftmargin=4.3em, %margin bw left page and frame
+    framexleftmargin=3.8em, %margin bw text and frame
+    %xleftmargin=3.4em,
+    framexrightmargin=-0.5em,
+    tabsize=2,
+    aboveskip=1.5em,
+    belowskip=0.5em,
+    framextopmargin=9pt,
+    framexbottommargin=9pt,
+    frameshape={RYR}{Y}{Y}{RYR}
+}
+
+%-----------------------------------------------------------------------------
+%custom commands
+
+%code
+\newcommand{\problem}[1]{\begin{adjustwidth}{0.1px}\noindent \framebox[1.2\width]{\large Problem #1}\end{adjustwidth} \bigskip\\}
+\newcommand{\codecap}[2]{{\vspace{4px}{\emph{#1}}} \hfill \href{#2}{Link to the code\ }\vspace{25px}}
+\newcommand{\code}[1]{{\texttt{#1}}}
+
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+
+%math
+\newcommand{\bigo}[1]{$O(#1)$ }
+\newcommand{\thetan}[1]{$\theta(#1)$}
+\newcommand{\vector}[1]{$\overrightarrow{#1}$}
+
+%display
+\newcommand{\link}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+\newcommand{\inlink}[1]{\underline{\emph{\link[black]{#1}{#1}}}}
+
+
+%header
+\newcommand{\lesgo}[5]{
+\begin{large}
+\emph{#1}\smallskip \\
+\textbf{Shubhro Gupta} \hfill Week #2\smallskip \\
+Professor #3 \hfill Due #4\\
+\end{large} \medskip \\
+{\emph{Collaborators: #5}}\\
+\hrule
+\vspace{50px}
+\\
+}
+
+\newcommand\dunderline[3][-1pt]{{%
+  \sbox0{#3}%
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+
+%new section
+\newcommand{\asec}[1]{{\vspace{20px}\large\dunderline[-3px]{1px}{\textbf{#1}}} \\}
+
+
+
+
+%-----------------------------------------------------------------------------
+%title
+\usepackage{algpseudocode}
+\begin{document}
+
+\lesgo{CS-2210 Linear Algebra}{1}{Pritam Ghosh}{September 26, 2022}{none}
+
+\problem{1.b, 1.e}
+\textbf{ATQ}
+\begin{itemize}
+    \item Let $O$ denote the origin and $P, Q$ denote some other point in $\mathbb{R}^3$.
+    \item Let $O & = (0, 0, 0), P = (0, 1, 1),$ and $Q = (2, 0, 1)$.
+\end{itemize}
+\\
+\textbf{To Draw / Prove}
+\begin{enumerate}[label=(\alph*)]
+    \item [(b)] Draw a vector diagram to establish the relation between $\overrightarrow{OP}, \overrightarrow{OQ},$ and $\overrightarrow{PQ}$.
+    \item [(e)] Is the set of vectors $\{\overrightarrow{OP}, \overrightarrow{OQ}, \overrightarrow{PQ}\}$ linearly independent?
+\end{enumerate} \bigskip
+\\
+\textbf{Figure / Proof}
+    
+\begin{enumerate}[label=(\alph*)]
+    \item [(b)]
+   $\overrightarrow{OP} = (0, 1, 1), \ \overrightarrow{PQ} = (2, -1, 0), \ \overrightarrow{OQ} = (2, 0, 1)$. 
+\begin{figure}[htp]
+\begin{center}
+\tdplotsetmaincoords{60}{120} 
+\begin{tikzpicture} [scale=1.4, tdplot_main_coords, axis/.style={->,color=grey,thick}, 
+vector/.style={-stealth,very thick}, 
+vector guide/.style={dashed,color=comment,thick}]
+
+%standard tikz coordinate definition using x, y, z coords
+\coordinate (O) at (0,0,0);
+
+%tikz-3dplot coordinate definition using x, y, z coords
+
+\pgfmathsetmacro{\ax}{3}
+\pgfmathsetmacro{\ay}{3}
+\pgfmathsetmacro{\az}{3}
+
+\coordinate (O) at (0,0,0);
+\coordinate (P) at (0, 1, 1);
+\coordinate (Q) at (2, 0, 1);
+
+%draw guide lines to components
+\draw[vector guide] (\ax,0,\az) -- (\ax, 0, 0);
+\draw[vector guide] (2,0,\az) -- (2, 0, 0);
+\draw[vector guide] (1,0,\az) -- (1, 0, 0);
+
+\draw[vector guide] (\ax,0,\az) -- (0, 0, \az);
+\draw[vector guide] (\ax,0,2) -- (0, 0, 2);
+\draw[vector guide] (\ax,0,1) -- (0, 0, 1);
+
+\draw[vector guide] (\ax,\ay,0) -- (0,\ay,0);
+\draw[vector guide] (\ax,2,0) -- (0,2,0);
+\draw[vector guide] (\ax,1,0) -- (0,1,0);
+
+\draw[vector guide] (\ax,\ay,0) -- (\ax,0,0);
+\draw[vector guide] (2,\ay,0) -- (2,0,0);
+\draw[vector guide] (1,\ay,0) -- (1,0,0);
+
+\draw[vector guide] (0,\ay,\az) -- (0,\ay,0);
+\draw[vector guide] (0,2,\az) -- (0,2,0);
+\draw[vector guide] (0,1,\az) -- (0,1,0);
+
+\draw[vector guide] (0,\ay,\az) -- (0,0,\az);
+\draw[vector guide] (0,\ay,2) -- (0,0,2);
+\draw[vector guide] (0,\ay,1) -- (0,0,1);
+
+%draw axes
+\draw[axis] (0,0,0) -- (3,0,0) node[anchor=north east]{$x$};
+\draw[axis] (0,0,0) -- (0,3,0) node[anchor=south west]{$y$};
+\draw[axis] (0,0,0) -- (0,0,3) node[anchor=south]{$z$};
+
+%draw a vector from O to P
+\draw[vector, color=blue] (O) -- (P) node[anchor=west]{$\overrightarrow{OP}$};
+\draw[vector, color=codepurple] (O) -- (Q) node[anchor=north]{$\overrightarrow{OQ}$};
+\draw[vector, color=codered] (P) -- (Q) node[anchor=south]{$\overrightarrow{PQ}$};
+
+\node[tdplot_main_coords,anchor=east]
+at (\ax,0,0){(\ax, 0, 0)};
+\node[tdplot_main_coords,anchor=west]
+at (0,\ay,0){(0, \ay, 0)};
+\node[tdplot_main_coords,anchor=east]
+at (0,0,\az){(0, 0, \az)};
+\end{tikzpicture}
+\end{center}
+\caption{Relation between $\overrightarrow{OP}, \overrightarrow{OQ} \text{ and } \overrightarrow{PQ}$} \label{Fig 1.}
+\end{figure}\bigskip
+\\Observing Figure 1, we can notice that $\boldsymbol{\overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}}$.
+\bigskip
+\\ We can verify this mathematically too, since $
+\begin{bmatrix}
+0 \\ 1 \\ 1
+\end{bmatrix} 
++
+\begin{bmatrix}
+2 \\ -1 \\ 1
+\end{bmatrix} 
+= 
+\begin{bmatrix}
+2 \\ 0 \\ 1
+\end{bmatrix}.
+$
+    
+    \item [(e)]
+    \textbf{To Determine} \medskip \\
+Whether the given set $\{\overrightarrow{OP}, \overrightarrow{OQ} , \overrightarrow{PQ}\} = \left\{
+  \begin{bmatrix}
+   0 \\ 1 \\ 1
+   \end{bmatrix}
+   ,\begin{bmatrix}
+   2 \\ -1 \\ 1
+   \end{bmatrix}
+   ,
+   \begin{bmatrix}
+   2 \\ 0 \\ 1
+   \end{bmatrix} \right\}$ is linearly independent.
+\bigskip
+\\
+\textbf{Proof} 
+\\
+The given set is clearly not independent. \\ In the Figure 1, $\overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}$, thereby proving that the vector $\overrightarrow{OQ}$ can be depicted by the other two vectors.\medskip
+\\
+Hence the set $\{\overrightarrow{OP}, \overrightarrow{OQ}, \overrightarrow{PQ}\}$ is \textbf{linearly dependent} and spans $\mathbb{R}^2$.
+   
+   \end{enumerate}
+   
+   \vspace{3cm}
+   \begin{center}
+       \emph{Question 2 in the next page}
+       
+   \end{center}
+
+
+\newpage
+\problem{2}
+
+\begin{tikzpicture}[scale=0.7]
+\draw (0,0) node[anchor=north]{$A$}
+  -- (4,0) node[anchor=north]{$C$}
+  -- (4,4) node[anchor=south]{$B$}
+  -- cycle;
+  
+\draw[dashed] (2.25,0) node[anchor=north]{$N$}
+-- (2.25, 2.25) node[anchor=south]{$M$}
+\end{tikzpicture}
+\hskip 50px\parbox[b]{8cm}{
+  \textbf{ATQ}
+\\
+$M &$ = midpoint of side $AB$\\
+$N &$ = midpoint of side $AC$
+\bigskip
+\\
+\textbf{To Prove} \medskip \\
+$\overrightarrow{MN}$= $\frac{1}{2}$ $\overrightarrow{BC}$, i.e. $\overrightarrow{MN}$ is parallel to $\overrightarrow{BC}$ and $\frac{1}{2}$ its length. \bigskip
+\\
+}
+\bigskip
+\\
+\textbf{Proof}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw (0,0) node[anchor=north]{$A$}
+  -- (4,0) node[anchor=north]{$C$}
+  -- (4,4) node[anchor=south]{$B$}
+  -- cycle;
+  
+\draw[dashed] (2.25,0) node[anchor=north]{$N$}
+-- (2.25, 2.25) node[anchor=south]{$M$}\\
+
+\draw[dashed] (0, 3.6) node[anchor=south]{$O$}
+-- (4, 4) node[anchor=south]{}\\
+\draw[dashed] (0, 3.6) node[anchor=north]{}
+-- (2.25, 2.25) node[anchor=south]{}\\
+\draw[dashed] (0, 3.6) node[anchor=north]{}
+-- (0, 0) node[anchor=south]{}\\
+\draw[dashed] (0, 3.6) node[anchor=north]{}
+-- (4, 0) node[anchor=south]{}\\
+\draw[dashed] (0, 3.6) node[anchor=north]{}
+-- (2.25, 0) node[anchor=south]{}\\
+\end{tikzpicture}
+    \end{center}
+\\
+\begin{align}
+AN & =NC \notag \\
+AM & = MB \notag \\
+    \overrightarrow{ON} + \overrightarrow{NC} & = \overrightarrow{OC} \notag \\
+    \overrightarrow{ON} & = \overrightarrow{OA} + \overrightarrow{NC}\notag \\
+    \Rightarrow \overrightarrow{NC} & = \overrightarrow{ON} + \overrightarrow{OA}\notag\\
+    \overrightarrow{ON} + \overrightarrow{ON} - \overrightarrow{OA} & = \overrightarrow{OC}\notag\\
+    \Rightarrow \overrightarrow{ON} & = \frac{\overrightarrow{OA} + \overrightarrow{OC}}{2}\\
+    \Rightarrow \overrightarrow{OM} & = \frac{\overrightarrow{OA} + \overrightarrow{OB}}{2}
+\end{align}
+\begin{center}
+    Putting the value of $\overrightarrow{OA}$ from (2) in (1) we get the following equation
+\end{center}
+\begin{align*}
+    2(\overrightarrow{ON}) - \overrightarrow{OC} & = 2(\overrightarrow{OM}) - \overrightarrow{OB}\\
+    2(\overrightarrow{ON} - \overrightarrow{OM}) & = \overrightarrow{OC} - \overrightarrow{OB}\\
+    2\overrightarrow{MN} & = \overrightarrow{BC}\\
+    \overrightarrow{MN} & = \frac{1}{2}\times \overrightarrow{BC}
+\end{align*}
+Since \textbf{\boldmath{$MN$ is $\frac{1}{2}\times BC$}}, they are linearly dependent meaning they also have the same direction. Therefore $MN$ and $BC$ are \textbf{parallel}. 
+
+\end{document}
