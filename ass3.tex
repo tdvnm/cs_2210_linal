@@ -1,0 +1,594 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper,top=0cm, margin=0.85in]{geometry}
+
+%for math
+\usepackage{amsmath, amssymb, amsfonts} %standard
+\usepackage{youngtab} % makes squares for math diagrams
+%-----------------------------------------------------------           
+
+%\usepackage{sectsty}
+%for lists and numbers
+\usepackage{enumitem}
+%-----------------------------------------------------------
+
+% Doc setting
+\usepackage[english]{babel} % Replace `english' with e.g. `spanish' to change the document language
+\usepackage{textcmds} %more symbols
+\usepackage{fontspec} %more fonts
+\usepackage{setspace} %to set spacing bw words and lines
+\usepackage{changepage}
+\setlength\parindent{0pt}
+
+%footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt} %remove headerline
+
+\fancyfoot[RE,RO]{\thepage}
+\fancyfoot[LE,LO]{\emph{Shubhro Gupta — CS-2210}}
+\pagestyle{fancy}
+%-----------------------------------------------------------
+
+%for pictures and graphs
+\usepackage{graphicx} %add image
+\usepackage{adjustbox}
+
+\usepackage{pgfplots} %for graphing plotting
+\pgfplotsset{compat=1.18, width=10cm}
+%-----------------------------------------------------------
+
+%for code
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{fancyvrb} %for coding blocks
+%\usepackage{algorithm}
+%\usepackage{algpseudocode} %for pseudocode
+%\usepackage{algorithm, algpseudocode}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{algorithm2e}
+
+\setmonofont[Scale=MatchLowercase]{[SFMono-Regular.ttf]}
+%\usepackage{lstfiracode} %firacode
+\usepackage[framemethod=tikz]{mdframed} %adding background to lstlisting
+\usepackage[ruled,vlined,boxed]{algorithm2e} %for pseudocode lines
+
+
+
+%for colors and links
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage[many]{tcolorbox}  % for colored boxes
+\usepackage{color} % to get colors
+\usepackage{xcolor} %more colors options and flexibility
+\usepackage{transparent}
+
+
+
+%-----------------------------------------------------------------------------
+
+
+%CUSOMIZATIONS
+
+% my colors
+%dracula
+\definecolor{background}{rgb}{0.16,0.16,0.21}
+\definecolor{codegreen}{rgb}{0.24,0.68,0.65}
+\definecolor{codepurple}{rgb}{0.51,0.31,0.87}
+\definecolor{codered}{rgb}{0.81,0.13,0.18}
+\definecolor{codebluegray}{rgb}{0.02,0.31,0.68}
+
+\definecolor{comment}{rgb}{0.67,0.74,0.79}
+\definecolor{textcolor}{rgb}{0.22,0.22,0.22}
+
+%style for coding
+\lstdefinestyle{python}{
+    language=python,
+    backgroundcolor=\color{white},   
+    commentstyle={\color{comment}},
+    keywordstyle={\color{codepurple}},
+    stringstyle={\color{codegreen}},
+    basicstyle={\ttfamily\color{textcolor}},
+    keywordstyle = [2]{\color{codered}},
+    keywordstyle = [3]{\color{codebluegray}},
+    keywordstyle = [4]{\color{teal}},
+    otherkeywords = {<, >, +, -, =, *, \[, \], &&, ||, format, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    morekeywords = [4]{+, -, *, /, =, <, >, format},
+    morekeywords = [3]{\[, \],  1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    %
+    breakatwhitespace=false, 
+    frame=shadowbox,
+    rulecolor=\color{textcolor},
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=15pt, %distance between code and numbers
+    numberstyle=\scriptsize\ttfamily\color{comment},
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    xleftmargin=4.3em, %margin bw left page and frame
+    framexleftmargin=3.8em, %margin bw text and frame
+    %xleftmargin=3.4em,
+    framexrightmargin=-0.5em,
+    tabsize=2,
+    aboveskip=1.5em,
+    belowskip=0.5em,
+    framextopmargin=9pt,
+    framexbottommargin=9pt,
+    frameshape={RYR}{Y}{Y}{RYR}
+}
+
+\lstdefinestyle{c}{
+    language=c,
+    backgroundcolor=\color{white},   
+    commentstyle={\color{comment}},
+    keywordstyle={\color{codepurple}},
+    stringstyle={\color{codegreen}},
+    basicstyle={\ttfamily\color{textcolor}},
+    keywordstyle = [2]{\color{codered}},
+    keywordstyle = [3]{\color{codebluegray}},
+    keywordstyle = [4]{\color{teal}},
+    otherkeywords = {<, >, +, -, =, *, \[, \], &&, ||, stdio.h, stdlib.h, 1, 2, 3, 4, 5, 6,7, 8, 9, 0, ;},
+    morekeywords = [4]{+, -, *, /, =, <, >, stdio.h, stdlib.h},
+    morekeywords = [3]{\[, \],  1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ;},
+    morekeywords = [2]{&&, ||},
+    %
+    breakatwhitespace=false, 
+    frame=shadowbox,
+    rulecolor=\color{textcolor},
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=15pt, %distance between code and numbers
+    numberstyle=\scriptsize\ttfamily\color{comment},
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    xleftmargin=4.3em, %margin bw left page and frame
+    framexleftmargin=3.8em, %margin bw text and frame
+    %xleftmargin=3.4em,
+    framexrightmargin=-0.5em,
+    tabsize=2,
+    aboveskip=1.5em,
+    belowskip=0.5em,
+    framextopmargin=9pt,
+    framexbottommargin=9pt,
+    frameshape={RYR}{Y}{Y}{RYR}
+}
+
+%-----------------------------------------------------------------------------
+%custom commands
+
+%code
+\newcommand{\problem}[1]{\begin{adjustwidth}{0.1px}\noindent \framebox[1.2\width]{\large Problem #1}\end{adjustwidth} \bigskip\\}
+\newcommand{\codecap}[2]{{\vspace{4px}{\emph{#1}}} \hfill \href{#2}{Link to the code\ }\vspace{25px}}
+\newcommand{\code}[1]{{\texttt{#1}}}
+
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+
+%math
+\newcommand{\bigo}[1]{$O(#1)$ }
+\newcommand{\thetan}[1]{$\theta(#1)$}
+\newcommand{\vector}[1]{$\overrightarrow{#1}$}
+
+\newcommand{\vecset}[2]{\{ {#1}_1, {#1}_2, {#1}_3,  \dots,  {#1}_{#2}\}}
+
+%display
+\newcommand{\link}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+\newcommand{\inlink}[1]{\underline{\emph{\link[black]{#1}{#1}}}}
+
+
+%header
+\newcommand{\lesgo}[5]{
+\begin{large}
+\emph{#1}\smallskip \\
+\textbf{Shubhro Gupta} \hfill Week #2\smallskip \\
+Professor #3 \hfill Due #4\\
+\end{large} \medskip \\
+{\emph{Collaborators: #5}}\\
+\hrule
+\vspace{50px}
+\\
+}
+
+\newcommand\dunderline[3][-1pt]{{%
+  \sbox0{#3}%
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+
+%new section
+\newcommand{\asec}[1]{{\vspace{20px}\large\dunderline[-3px]{1px}{\textbf{#1}}} \\}
+
+
+
+
+%-----------------------------------------------------------------------------
+%title
+\usepackage{algpseudocode}
+\begin{document}
+
+\lesgo{CS-2210 Linear Algebra}{3}{Pritam Ghosh}{October 10, 2022}{none}
+
+\problem{1}
+Check whether the following sets are sub-spaces of their respective vector spaces. Make sure to check all 3 axioms and mention which of them fail.
+\begin{enumerate}[label=(\Alph*)]
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2, x_3\right) \mid x_1+2 x_2<0\right\}$.
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2, x_3\right) \mid x_3=x_1+ x_2\right\}$.
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2\right) \mid x_1+ x_2=1\right\}$.
+    
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2, x_3\right) \mid 
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = 
+s \begin{bmatrix}
+2 \\ 1 \\ 1
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}, \text{ for }s,t \in \mathbb{R}
+    \right\}$.
+    
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2, x_3\right) \mid 
+    \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = 
+\begin{bmatrix}
+0 \\ 1 \\ 2
+\end{bmatrix} + 
+s \begin{bmatrix}
+2 \\ 1 \\ 1
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}, \text{ for }s,t \in \mathbb{R}
+    \right\}$.
+    
+    \item $V = \mathbb{R}^3, \ F = \mathbb{R}, \ W=\left\{\left(x_1, x_2, x_3\right) \mid 
+    \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = 
+\begin{bmatrix}
+\llap{-}1 \\ 1 \\ 0
+\end{bmatrix} + 
+s \begin{bmatrix}
+2 \\ 1 \\ 1
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}, \text{ for }s,t \in \mathbb{R}
+    \right\}$.
+    
+    \item $V = \mathbb{R}^3n, \ F = \mathbb{R}, \ A \text{ is }m \times n \text{ matrix}, \ W=\{ x \in \mathbb{R}^n \mid A\vec{x} = 3\vec{x} \}$.
+    \item $V = \mathbb{R}^3n, \ F = \mathbb{R}, \ A \text{ is }m \times n \text{ matrix}, \ W=\{ x \in \mathbb{R}^n \mid A\vec{x} = \vec{0} \}$.
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}\\
+
+
+
+
+\newpage
+\problem{2}
+\begin{flalign*}
+&\begin{aligned}
+\text{Let } \zeta^0[0, 1] & = \text{Continuous functions } f:[0, 1] \rightarrow R\\
+\zeta^1[0, 1] & = \text{Differentiable functions } f:[0, 1] \rightarrow R\\
+\zeta^2[0, 1] & = \{ f:[0, 1] \rightarrow R \mid f"(x) \text{ exists for all } x \in [0, 1]\}.
+\\
+P_k & = \text{All polynomials with degree} \leq k \text{ and have real co-efficients}.
+\end{aligned}&&
+\end{flalign*}
+\begin{enumerate}[label=(\Alph*)]
+    \item Show that $\zeta^0[0, 1], \ \zeta^1[0, 1], \  \zeta^2[0, 1], $ and $P_k$ are all vector spaces.
+    \item Show that $\zeta^1[0, 1]$ is a \textbf{proper} subspace of $\zeta^1[0, 1]$.
+    \item If $\zeta(\mathbb{R})$ denotes a continous function $f: \mathbb{R} \rightarrow \mathbb{R}$, show that $P_k$ is a sub-space $\zeta(\mathbb{R})$, $\zeta^1(\mathbb{R})$.
+    \item Is $W =  \{ f(x) \in P_k \mid \int_{0}^{1} f(t) dt = 0\}$ a sub-space of $P_k$?
+    
+    \item Is $W =  \{ f(x) \in \zeta^1(\mathbb{R}) \mid f't + 2f(t) = 0 \forall t\}$ a sub-space of $\zeta(\mathbb{R})$?
+    
+    \item Is $W =  \{ f(x) \in \zeta[0, 1] \mid f(1) = 2 \}$ a sub-space of $\zeta[0, 1]$?
+    
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+\newpage
+\problem{3}
+Let $V$ be any vector space over $\mathbb{R}$.
+\begin{enumerate}[label=(\Alph*)]
+    \item If $U, \ W \subset V$ are sub-spaces of $V$, then show that $U \cap W$ is also a sub-space of $V$.
+    \item If $U, \ W \subset V$ are sub-spaces of $V$, then give an example to show that $U \cup W$ may not be a sub-space of $V$.
+    \item Let $U, \ W$ be any sub-space of $V$.\\
+    Let $U+W = \{ \vec{u} + \vec{w} \in V \mid \vec{u} \in U, \ \vec{w} \in W \}$.\\
+    Show that $U+W$ is a sub-space of $W$.
+    \item Give two examples where $U, \ W$ are two proper sub-spaces of some vector space $V$ such that 
+    \begin{enumerate}[label=(\alph*)]
+        \item $U+W$ is a \textbf{proper }sub-space of $V$.
+        \item $U+W=V$
+    \end{enumerate}
+    \item Show that $(U+W)^\perp = U^\perp \cap W^\perp$, where $U, \ W$ are sub-spaces of $V$, where $V$ is an inner product space.
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+\newpage
+\problem{4}
+\begin{enumerate}[label=(\Alph*)]
+    \item Show that if $V = $ Z-axis in $\mathbb{R}^3$ and $W = $ XY-plane in $\mathbb{R}^3$, then $W = V^{\perp}$ and $V \cap W = \{ \vec{0}\}$.
+    \item Suppose $V, \ W$ are sub-spaces of $\mathbb{R}^n$, such that $V^{\perp} = W$. Then show that $V \cap W = \{ \vec{0}\}$.
+    \item Suppose $V, \ W$ are sub-spaces of $\mathbb{R}^n$ with $V \subset W$. Then show that $W^\perp \subset V^\perp$.
+    \item Draw a schematic picture in $\mathbb{R}^3$, with $V = $ X-axis, $W = $ XY-plane to demonstrate problem(C).
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{5}
+Let $P_k$ denote the vector space of all polynomials of degree $\leq k$, having real co-efficients.
+\begin{enumerate}[label=(\Alph*)]
+    \item Show that $\{ 1, x, x^2, x^3, \dots, x^k\}$ is a basis of $P_k$.
+    \item Show that $\langle f, g\rangle = \int_{a}^{b} f(t) \cdot g(t) \ dt$ defines an inner-product on $P_k$ for some fixed $a, b \in \mathbb{R}$.
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{6}
+\begin{enumerate}[label=(\Alph*)]
+    \item Are the vectors $\left\{ f(x) = 1, \ g(x) = cos(x), \ h(x) = sin(x)\right\}$ linearly independent in $\zeta[0, \ 2\pi]$?
+    \item Are the vectors $f(x), \ g(x)$ orthogonal? What about $g(x), \ h(x)$?
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{7}
+Consider the function $g(x) = x - 1 \in [0, \ 1]$. What is the orthogonal complement of the sub-space spanned by $g(x)$ in [0, 1]?
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{8}
+Let $V \in \mathbb{R}^n$ be a sub-space. \\
+Show that ($v^{\perp})^{\perp} = V$.
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{9}
+Let $W = span\left\{ \begin{bmatrix}
+1 \\ 1 \\ 1 \\ 2
+\end{bmatrix},  \begin{bmatrix}
+1 \\ \llap{-}1 \\ 5 \\ 2
+\end{bmatrix}\right\} \in \mathbb{R}^4$.\\
+Describe $W^\perp$ and write down a basis for $W^\perp$.
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{10}
+Let $V$ be any vector space over $\mathbb{R}$. Suppose $\{\vec{u}, \vec{v}, \vec{w}\}$ is linearly independent set of vectors. 
+\\ Show that $\{\vec{u} + \vec{v}, \vec{v} - \vec{w}, \vec{w}\}$ is also linearly independent. \\
+Is $span\{\vec{u}, \vec{v}, \vec{w}\} = span\{\vec{u} + \vec{v}, \vec{v} - \vec{w}, \vec{w}\}$
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{11}
+Check whether the following sets of vector are basis of $V$ mentioned below:
+\begin{enumerate}[label=(\Alph*)]
+    \item $\left\{ 
+    \begin{bmatrix}
+    1 \\ 2 \\ 1
+    \end{bmatrix},
+    \begin{bmatrix}
+    1 \\ 2 \\ 1
+    \end{bmatrix},
+    \begin{bmatrix}
+    1 \\ 2 \\ 1
+    \end{bmatrix}
+    \right\}, \  v = \mathbb{R}^3 \text{ over } \mathbb{R}$.
+    
+    \item $\left\{ 
+    \begin{bmatrix}
+    1 \\ 0 \\ 2 \\ 3
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 \\ 1 \\ 1 \\ 1
+    \end{bmatrix},
+    \begin{bmatrix}
+    1 \\ 1 \\ 4 \\ 4
+    \end{bmatrix}
+    \right\}, \  v = \mathbb{R}^4 \text{ over } \mathbb{R}$.
+    
+    \item $\left\{ 
+    \begin{bmatrix}
+    1 \\ 1 \\ 1
+    \end{bmatrix},
+    \begin{bmatrix}
+    2 \\ 3 \\ 3
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 \\ 1 \\ 2
+    \end{bmatrix}
+    \right\}, \  v = \mathbb{R}^3 \text{ over } \mathbb{R}$.
+    
+\end{enumerate}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{12}
+For each of the following matrices $A$, write down:\\
+a \underline{basis} of $ker(A)$\\
+a \underline{basis} of $Img(A)$\\
+
+\begin{minipage}{0.40\textwidth}
+\begin{enumerate}[label=(\Alph*)]
+    \item $A = 
+    \begin{bmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6
+    \end{bmatrix}
+    $
+    \item $A = 
+    \begin{bmatrix}
+    2 & 1 & 3\\
+    4 & 3 & 5\\
+    3 & 3 & 5
+    \end{bmatrix}
+    $
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}{0.40\textwidth}
+\begin{enumerate}
+    \item [(C)] $A = 
+    \begin{bmatrix}
+    1 & \llap{-}1 & 1 & 1 & 0\\
+    1 & 0 & 2 & 1 & 1\\
+    0 & 2 & 2 & 2 & 0\\
+    \llap{-}1 & 1 & \llap{-}1 & 0 & \llap{-}1
+    \end{bmatrix}
+    $
+    \item [(D)] $A = 
+    \begin{bmatrix}
+    1 & 1 & 3 & 2 \\
+    0 & 2 & 1 & 1 \\
+    \llap{-}1 & 1 & 0 & 1
+    \end{bmatrix}
+    $
+\end{enumerate}
+\end{minipage}
+\bigskip\\
+\textbf{Solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\problem{13}
+Show that if $V$ is a vector space over $F$ and $\vecset{u}{k}$ and $\vecset{v}{l}$ are both basis; then $k = l$.
+\bigskip\\
+\textbf{Solution}
+
+
+\end{document}
